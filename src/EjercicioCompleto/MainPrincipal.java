@@ -42,7 +42,7 @@ public class MainPrincipal {
 
         Gson gson = new Gson();
 
-        if(operacion == "init"){
+        if(operacion.equals("init")){
             Alumno alumno = new Alumno("Felix", 28);
             try(FileWriter fw = new FileWriter(fichero)){
                 gson.toJson(alumno,fw);
@@ -50,7 +50,7 @@ public class MainPrincipal {
                 e.printStackTrace();
             }
         }
-        if(operacion == "show"){
+        if(operacion.equals("show")){
             try (FileReader reader = new FileReader(fichero)) {
                 Alumno alumno = gson.fromJson(reader,Alumno.class);
                 if(alumno != null){
@@ -62,7 +62,7 @@ public class MainPrincipal {
                 System.out.println("Error al leer el fichero");
             }
         }
-        if(operacion != "init" || operacion != "show"){
+        if(!operacion.equals("init") && !operacion.equals("show")){
             System.out.println("Usa 'init' o 'show'");
         }
     }
