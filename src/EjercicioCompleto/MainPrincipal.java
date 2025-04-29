@@ -46,13 +46,14 @@ public class MainPrincipal {
             Alumno alumno = new Alumno("Felix", 28);
             try(FileWriter fw = new FileWriter(fichero)){
                 gson.toJson(alumno,fw);
+                System.out.println("Se ha guardado con exito");
             }catch (IOException e){
                 e.printStackTrace();
             }
         }
         if(operacion.equals("show")){
             try (FileReader reader = new FileReader(fichero)) {
-                Alumno alumno = gson.fromJson(reader,Alumno.class);
+                Alumno alumno = gson.fromJson(reader, Alumno.class);
                 if(alumno != null){
                     System.out.println("Alumno cargado: " + alumno.toString());
                 }else
